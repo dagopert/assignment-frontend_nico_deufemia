@@ -3,6 +3,7 @@ import page from 'page'
 import fetch from 'isomorphic-fetch'
 import url from 'url'
 import tplHome from '../templates/home.hbs'
+import tplContact from '../templates/contact.hbs'
 import tplNotFound from '../templates/not-found.hbs'
 
 const $content = $('#content')
@@ -16,5 +17,9 @@ export function home() {
 export function notFound() {
   console.log('Page not Found')
   $content.html(tplNotFound())
+}
+
+export function contact() {
+  $content.html(tplContact())
 }
 

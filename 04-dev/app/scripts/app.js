@@ -17,6 +17,7 @@ page('*', function(ctx, next) {
 
 page('/', '/home')
 page('/home', pages.home)
+page('/contact', pages.contact)
 
 page('*', pages.notFound)
 
