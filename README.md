@@ -1,4 +1,4 @@
-# Assignment for Frontend Development 1
+# Assignment 
 
 [![Build Status](https://travis-ci.org/multimediatechnology/assignment-frontend.svg)](https://travis-ci.org/multimediatechnology/assignment-frontend)
 
@@ -7,4 +7,3 @@
 ```js
 npm test
 ```
-
