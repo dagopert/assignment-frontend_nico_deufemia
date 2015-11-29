@@ -1,0 +1,19 @@
+{
+  "name": "testdrivendevelopment",
+  "version": "1.0.0",
+  "description": "Assignment 07-Frontend",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Nico Deufemia",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^2.3.4",
+    "node-fixtures": "0.0.1",
+    "should": "^7.1.1"
+  }
+}
