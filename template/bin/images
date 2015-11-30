@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-imagemin app/images dist/images

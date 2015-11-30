@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha"
   },
-  "author": "Hannes Moser <hannes@impossiblearts.com>",
+  "author": "Nico Deufemia",
   "license": "MIT",
   "devDependencies": {
     "babel": "^5.8.23",

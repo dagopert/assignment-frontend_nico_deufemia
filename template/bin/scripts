@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-browserify app/scripts/app.js > dist/scripts/app.js
