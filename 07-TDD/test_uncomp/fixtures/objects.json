@@ -1,0 +1,17 @@
+{
+  "object1": {
+    "name": "Hammer",
+    "description": "Ein roter Hammer",
+    "price":  "10,00"
+  },
+  "object2": {
+    "name": "Nagel",
+    "description": "viele Nägel",
+    "price":  "2,50"
+  },
+  "object3": {
+    "name": "Zange",
+    "description": "Eine Zange",
+    "price":  "7,50"
+  }
+}
