@@ -1,5 +1,6 @@
-mport d3 from 'd3'
+import d3 from 'd3'
 import page from 'page'
+import fetch from 'isomorphic-fetch'
 import config from './config'
 import tplHome from './templates/home.hbs'
 import tplNotFound from './templates/not-found.hbs'
@@ -7,7 +8,7 @@ import tplError from './templates/error.hbs'
 import barchart from './charts/barchart'
 import geo from './charts/geo'
 import circles from './charts/circles'
-import mychart from './charts/mychart'
+import speed from './charts/speed'
 
 const content = document.getElementById('content')
 
@@ -35,16 +36,14 @@ function driversByAge(data) {
 export function home() {
   const drivers = fetch(`${config.api.url}/drivers.json?limit=10`)
   const courses = fetch(`${config.api.url}/circuits.json?limit=10`)
-  const constructors = fetch(`${config.api.url}/constructors.json?limit=10`)
   Promise
-    .all([drivers, courses, constructors])
+    .all([drivers, courses])
     .then(values => {
       return Promise.all(values.map(val => val.json()))
     })
     .then(data => {
       const driversData = driversByAge(data[0])
       const coursesData = data[1].MRData.CircuitTable.Circuits
-      const constructorsData = data[2].MRData.ConstructorTable.Constructors
 
       content.innerHTML = tplHome({
         drivers: driversData,
@@ -52,9 +51,8 @@ export function home() {
       })
 
       // create charts
-      barchart('chart1', driversData)
-      geo('chart2', coursesData)
       circles('chart3')
+      //speed('chart4')
     })
     .catch(err => {
       globalError = err

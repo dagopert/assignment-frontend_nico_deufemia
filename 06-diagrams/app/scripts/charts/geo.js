@@ -1,6 +1,6 @@
 import d3 from 'd3'
 import uuid from 'uuid'
-import tpl from '../templates/geo.hbs'
+import tpl from '../templates/d3.hbs'
 import countries from '../data/countries.geo.json'
 
 function draw(chartId, data, width, height) {
