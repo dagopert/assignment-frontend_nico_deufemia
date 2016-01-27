@@ -2,6 +2,7 @@ import d3 from 'd3'
 import page from 'page'
 import config from '../config'
 import tplDrivers from '../templates/drivers.hbs'
+import tplCourses from '../templates/courses.hbs'
 import tplNotFound from '../templates/not-found.hbs'
 import tplError from '../templates/error.hbs'
 
@@ -86,6 +87,35 @@ function draw(data, width = 800, height = 400) {
     })
 }
 
+function draw_earth(asd, width = 960, height = 960){
+  var projection = d3.geo.mercator()
+      .center([0, 5 ])
+      .scale(900)
+      .rotate([-180,0]);
+
+  var svg = d3.select("#charts").append("svg")
+      .attr("width", width)
+      .attr("height", height);
+
+  var path = d3.geo.path()
+      .projection(projection);
+
+  var g = svg.append("g");
+
+// load and display the World
+  d3.json("world-110m2.json", function(error, topology) {
+    g.selectAll("path")
+        .data(topojson.object(topology, topology.objects.countries)
+            .geometries)
+        .enter()
+        .append("path")
+        .attr("d", path)
+  });
+
+  d3.select(self.frameElement).style("height", height + "px");
+
+}
+
 export function drivers() {
   fetch(config.api.url + `/drivers.json?limit=10`)
     .then(response => {
@@ -114,6 +144,31 @@ export function drivers() {
       page('/error')
     })
 }
+
+export function courses() {
+    fetch(config.api.url + `/circuits.json?limit=10`)
+    .then(response => {
+        if (response.status >= 400) {
+        return page('error')
+      }
+      return response.json()
+    })
+    .then(data => {
+        const width = 800
+        const height = 300
+        content.innerHTML = tplCourses({
+          viewBox: `0 0 ${width} ${height}`,
+          transformG: 'translate(0, 0)',
+          transformX: `translate(0, ${height})`,
+          courses: data.MRData.CircuitTable.Circuits
+      })
+    })
+    .catch(err => {
+        globalError = err
+      page('/error')
+    })
+}
+
 
 export function notFound() {
   console.log('not Found')
