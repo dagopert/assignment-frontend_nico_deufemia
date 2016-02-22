@@ -1,0 +1,21 @@
+<h2>Driver: {{driver.0.givenName}} {{driver.0.familyName}}</h2>
+<table class="table table-hover table-condensed table-responsive">
+    <thead>
+    <th>Name</th>
+    <th>Nationality</th>
+    <th>Date of birth</th>
+    <th>URL</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="/drivers/{{driver.0.driverId}}">{{driver.0.givenName}} {{driver.0.familyName}}</a></td>
+            <td>{{driver.0.nationality}}</td>
+            <td>{{dateFormat driver.0.dateOfBirth format="D. MMMM YYYY"}}</td>
+            <td>
+                <a href="{{driver.0.url}}" rel="external" target="_blank">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
